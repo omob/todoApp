@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 Aug 2019, 17:51:54 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <subclass name="com.deevcorp.todo.PersistDB" extends="com.deevcorp.todo.IPersistDB" discriminator-value="PersistDB" lazy="false">
+        <property name="_session" type="org.hibernate.Session" access="field">
+            <column name="_SESSION" />
+        </property>
+        <property name="_tx" type="org.hibernate.Transaction" access="field">
+            <column name="_TX" />
+        </property>
+    </subclass>
+</hibernate-mapping>

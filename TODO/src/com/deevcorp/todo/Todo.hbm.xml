@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 4 Aug 2019, 17:51:54 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+    <subclass name="com.deevcorp.todo.Todo" extends="com.deevcorp.todo.ITodo" discriminator-value="Todo" lazy="false">
+        <property name="username" type="java.lang.String" access="field">
+            <column name="USERNAME" />
+        </property>
+        <map name="todoMap" table="TODO" lazy="true" access="field">
+            <key>
+                <column name="USERNAME" />
+            </key>
+            <map-key type="java.lang.String"></map-key>
+            <element type="java.lang.String">
+                <column name="TODOMAP" />
+            </element>
+        </map>
+        <many-to-one name="persistDB" class="com.deevcorp.todo.IPersistDB" access="field" fetch="join">
+            <column name="PERSISTDB" />
+        </many-to-one>
+    </subclass>
+</hibernate-mapping>
