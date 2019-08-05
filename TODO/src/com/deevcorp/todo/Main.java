@@ -9,40 +9,33 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 		Todo todoList = new Todo(new PersistDB());
-		todoList.fetchTodo("ella").displayInfo();
 		
-//		Scanner scannerObj = new Scanner(System.in);
-//		String username = null;
-//		String task = null;
-//		
-//		System.out.println("Enter your username");
-//		username = scannerObj.nextLine();
-//		todoList.setUsername(username);
-//		
-//		System.out.println("Enter tasks and press 'end' to quit");
-//		
-//		while(task != "end") {
-//			System.out.println("Enter Task: ");
-//			task = scannerObj.nextLine().trim();
-//			
-//			if (task.equalsIgnoreCase("end")) break;
-//			
-//			String id = Long.toString(new Date().getTime());
-//			todoList.addTodo(id, task);
-//		}
-//		
-//		
-//		// Display list of task
-//		
-//		todoList.getAll().forEach((String id, String tt) -> {
-//			System.out.printf("%s: %s \n", id, tt);
-//		});
-//		
-//		// save
-//		todoList.save();
+		Scanner scannerObj = new Scanner(System.in);
+		String username = null;
+		String task = null;
+		
+		System.out.println("Enter your username");
+		username = scannerObj.nextLine();
+		todoList.setUsername(username);
+		
+		System.out.println("Enter tasks and press 'end' to quit");
+		
+		while(task != "end") {
+			System.out.println("Enter Task: ");
+			task = scannerObj.nextLine().trim();
+			
+			if (task.equalsIgnoreCase("end")) break;
+			
+			String id = Long.toString(new Date().getTime());
+			todoList.addTodo(id, task);
+		}
+
+		todoList.getAll().forEach((String id, String tt) -> {
+			System.out.printf("%s: %s \n", id, tt);
+		});
+
+		todoList.save();
 	}
 
 }
