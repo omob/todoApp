@@ -74,11 +74,17 @@ public class Todo implements Serializable, ITodo{
 
 	@Override
 	public Todo fetchTodo(String username) {
-		return this.persistDB.fetch(this, username);
+		Todo todo = this.persistDB.fetch(this, username);
+		if (todo == null) {
+			throw new NullPointerException("Username does not exist");
+		}
+		
+		return todo;
 	}
 	
 	public void save() {	
 		this.persistDB.saveToDB(this);
+		System.out.println("Saved to DB");
 	}
 
 	public void fetchAll() {

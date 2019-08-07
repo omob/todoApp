@@ -11,6 +11,15 @@ public class Main {
 	public static void main(String[] args) {
 		Todo todoList = new Todo(new PersistDB());
 		
+		// fetch todo list
+//		try {
+//			todoList.fetchTodo("jammie")
+//				.displayInfo();			
+//		} catch (NullPointerException e) {
+//			System.out.printf("Error: %s", e.getMessage());
+//		}
+//		
+		// add new todo list entry
 		Scanner scannerObj = new Scanner(System.in);
 		String username = null;
 		String task = null;

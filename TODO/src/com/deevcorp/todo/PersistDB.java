@@ -45,12 +45,28 @@ public class PersistDB implements IPersistDB{
 	}
 	
 	public Todo fetch(ITodo todo, String username) {
-		return (Todo) this._session.get(todo.getClass(), username);
+		Todo _todo = null;
+		try {
+			_todo = (Todo) this._session.get(todo.getClass(), username);
+		} catch (Exception e) {
+			System.out.println("Error: " + e.getMessage());
+		} 
+		
+		return _todo;
 	}
 
 	public List<Todo> fetchAll(ITodo todo) {
-		List<Todo> obj = (List<Todo>) this._session.createQuery("from Todo", todo.getClass()).list();
-		this._tx.commit();
+		List<Todo> obj = null;
+		try {
+			 obj = (List<Todo>) this._session.createQuery(
+					"from Todo", 
+					todo.getClass()
+				).list();
+			
+			this._tx.commit();
+		} catch (Exception e) {
+			System.out.println("Error: " +  e.getMessage());
+		} 
 		
 		return obj;
 	}
